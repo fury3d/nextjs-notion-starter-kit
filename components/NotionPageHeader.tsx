@@ -18,7 +18,7 @@ export function NotionPageHeader({
       borderBottom: '1px solid #3a3f42'
     }}>
       {/* Esquerda: Logo */}
-      <img src="/vivaicon2.png" alt="Logo" style={{ height: '50px', objectFit: 'contain' }} />
+      <img src="/favicon.png" alt="Logo" style={{ height: '50px', objectFit: 'contain' }} />
 
       {/* Centro: Título Dinâmico */}
       <div style={{
