@@ -20,6 +20,9 @@ body {
   font-family: var(--notion-font);
   overflow-x: hidden;
 }
+.notion-title {
+  display: none !important;
+}
 
 .static-tweet blockquote {
   margin: 0;
