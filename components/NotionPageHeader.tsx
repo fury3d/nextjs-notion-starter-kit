@@ -32,11 +32,13 @@ function ToggleThemeButton() {
   )
 }
 
-export function NotionPageHeader({
-  block
+export const NotionPageHeader = ({
+  block,
+  activeSection
 }: {
-  block: types.CollectionViewPageBlock | types.PageBlock
-}) {
+  block: types.PageBlock
+  activeSection?: string
+}) => {
   return (
     <header style={{
       display: 'flex',
@@ -50,14 +52,14 @@ export function NotionPageHeader({
       {/* Esquerda: Logo */}
       <img src="/vivaicon2.png" alt="Logo" style={{ height: '50px', objectFit: 'contain' }} />
 
-      {/* Centro: Título Dinâmico do Notion */}
+      {/* Centro: Título Dinâmico */}
       <div style={{
         color: '#00E5C5',
         fontSize: '20px',
         fontWeight: '900',
         textTransform: 'uppercase'
       }}>
-        <Breadcrumbs block={block} />
+        <Breadcrumbs block={block} activeSection={activeSection} />
       </div>
 
       {/* Direita: Busca, Tema e Slogan */}
