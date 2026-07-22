@@ -53,7 +53,7 @@ export function NotionPageHeader({
       {/* Centro: Título Dinâmico do Notion */}
       <div style={{
         color: '#00E5C5',
-        fontSize: '20px',
+        fontSize: '40px',
         fontWeight: '900',
         textTransform: 'uppercase'
       }}>
