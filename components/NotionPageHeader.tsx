@@ -52,7 +52,7 @@ export const NotionPageHeader = ({
       {/* Esquerda: Logo */}
       <img src="/vivaicon2.png" alt="Logo" style={{ height: '50px', objectFit: 'contain' }} />
 
-      {/* Centro: Título Dinâmico */}
+      {/* Centro: Título Dinâmico do Notion */}
       <div style={{
         color: '#00E5C5',
         fontSize: '20px',
