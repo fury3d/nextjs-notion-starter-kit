@@ -26,7 +26,7 @@ export default siteConfig({
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
-  defaultPageIcon: 'public/vivaicon2.png',
+  defaultPageIcon: 'https://github.com/fury3d/nextjs-notion-starter-kit/blob/c1d00c40426cb80240045841d7762a56819aa56e/public/vivaicon2.png',
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
