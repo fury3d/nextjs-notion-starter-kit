@@ -1,9 +1,9 @@
 import type * as types from 'notion-types'
 import cs from 'classnames'
 import * as React from 'react'
-import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import { Breadcrumbs, Search } from 'react-notion-x'
 
-import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
+import { isSearchEnabled } from '@/lib/config'
 import { MoonIcon } from '@/lib/icons/moon'
 import { SunIcon } from '@/lib/icons/sun'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -32,56 +32,49 @@ function ToggleThemeButton() {
   )
 }
 
-export function NotionPageHeader({
-  block
+export const NotionPageHeader = ({
+  block,
+  activeSection
 }: {
-  block: types.CollectionViewPageBlock | types.PageBlock
-}) {
-  const { components, mapPageUrl } = useNotionContext()
-
-  if (navigationStyle === 'default') {
-    return <Header block={block} />
-  }
-
+  block: types.PageBlock
+  activeSection?: string
+}) => {
   return (
-    <header className='notion-header'>
-      <div className='notion-nav-header'>
-        <Breadcrumbs block={block} rootOnly={true} />
+    <header style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: '100%',
+      padding: '12px 24px',
+      backgroundColor: '#2f3438',
+      borderBottom: '1px solid #3a3f42'
+    }}>
+      {/* Esquerda: Logo */}
+      <img src="/vivaicon2.png" alt="Logo" style={{ height: '50px', objectFit: 'contain' }} />
 
-        <div className='notion-nav-header-rhs breadcrumbs'>
-          {navigationLinks
-            ?.map((link, index) => {
-              if (!link?.pageId && !link?.url) {
-                return null
-              }
+      {/* Centro: Título dinâmico do Notion */}
+      <div style={{
+        color: '#00E5C5',
+        fontSize: '20px',
+        fontWeight: '900',
+        textTransform: 'uppercase'
+      }}>
+        <Breadcrumbs block={block} activeSection={activeSection} />
+      </div>
 
-              if (link.pageId) {
-                return (
-                  <components.PageLink
-                    href={mapPageUrl(link.pageId)}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.PageLink>
-                )
-              } else {
-                return (
-                  <components.Link
-                    href={link.url}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.Link>
-                )
-              }
-            })
-            .filter(Boolean)}
-
-          <ToggleThemeButton />
-
-          {isSearchEnabled && <Search block={block} title={null} />}
+      {/* Direita: Busca + Slogan */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+        {isSearchEnabled && <Search block={block} />}
+        <ToggleThemeButton />
+        <div style={{
+          textAlign: 'right',
+          fontWeight: '900',
+          fontSize: '11px',
+          color: '#ffffff',
+          lineHeight: '1.1',
+          fontFamily: 'sans-serif'
+        }}>
+          A GENTE<br />CUIDA<br />DO QUE É<br />NOSSO!
         </div>
       </div>
     </header>
