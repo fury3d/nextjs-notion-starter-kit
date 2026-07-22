@@ -60,3 +60,7 @@ body {
 ::-webkit-scrollbar-track {           
     background-color: var(--bg-color);
 }
+
+.github-corner {
+  display: none !important;
+}
